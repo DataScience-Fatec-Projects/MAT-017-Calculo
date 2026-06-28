@@ -1,3 +1,6 @@
+# REPO
+A ideia do repo é focar o aprendizado e resoluções dos problemas segundo a ementa do curso abaixo.
+
 # 6.3.5 – MAT-017 – Cálculo – Oferta Presencial – Total de 80 aulas
 
 ## Competências desenvolvidas neste componente (profissionais e socioemocionais)
