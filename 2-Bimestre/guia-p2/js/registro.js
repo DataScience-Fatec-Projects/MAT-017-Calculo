@@ -16,6 +16,10 @@
     GUIA.formulario = formulario;
   };
 
+  GUIA.registrarSimulado = function (simulado) {
+    GUIA.simulado = simulado;
+  };
+
   /* Macros KaTeX para a notação brasileira (sen, tg, cotg, cosec). */
   GUIA.macros = {
     "\\sen": "\\operatorname{sen}",
@@ -65,7 +69,7 @@
   const nomes = Object.keys(M).join(",");
 
   GUIA.compilar = function (expr) {
-    const fn = new Function("x", "t", "M", "const {" + nomes + "} = M; return (" + expr + ");");
-    return (v) => fn(v, v, M);
+    const fn = new Function("x", "t", "z", "M", "const {" + nomes + "} = M; return (" + expr + ");");
+    return (v) => fn(v, v, v, M);
   };
 })(typeof window !== "undefined" ? window : globalThis);

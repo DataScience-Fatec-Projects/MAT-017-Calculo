@@ -139,9 +139,47 @@ for (const g of GUIA.grupos) {
     const idsIt = new Set();
     for (const it of ex.itens || []) {
       const inome = `${enome}/${it.id}`;
-      const antes = erros.length;
       if (idsIt.has(it.id)) erros.push(`${inome}: id de item duplicado`);
       idsIt.add(it.id);
+      checaItem(it, inome);
+    }
+  }
+}
+
+// ------------------------------------------------------------ simulado
+let totalSim = 0;
+if (GUIA.simulado) {
+  const S = GUIA.simulado;
+  let soma = 0;
+  for (const q of S.questoes) {
+    const qnome = `simulado/${q.id}`;
+    for (const campo of ["id", "numero", "pontos", "tema", "enunciado", "itens"])
+      if (q[campo] === undefined) erros.push(`${qnome}: falta "${campo}"`);
+    checaTexto(`${qnome}.enunciado`, q.enunciado);
+    let somaQ = 0;
+    for (const it of q.itens) {
+      const inome = `${qnome}/${it.id}`;
+      totalSim++;
+      if (typeof it.pontos !== "number") erros.push(`${inome}: falta "pontos"`);
+      if (!it.fonte || !it.fonte.url || !it.fonte.nome || !it.fonte.item) erros.push(`${inome}: falta a referência (fonte.nome/url/item)`);
+      somaQ += it.pontos || 0;
+      checaItem(it, inome);
+    }
+    if (Math.abs(somaQ - q.pontos) > 1e-9) erros.push(`${qnome}: itens somam ${somaQ}, mas a questão vale ${q.pontos}`);
+    soma += q.pontos;
+  }
+  if (Math.abs(soma - S.total) > 1e-9) erros.push(`simulado: questões somam ${soma}, mas o total é ${S.total}`);
+}
+
+const total = GUIA.grupos.reduce((s, g) => s + (g.exercicios || []).reduce((t, e) => t + (e.itens || []).length, 0), 0) + totalSim;
+for (const a of avisos) console.log("aviso: " + a);
+for (const e of erros) console.log("ERRO:  " + e);
+console.log(`\n${itensOk}/${total} itens OK${totalSim ? ` (inclui ${totalSim} do simulado)` : ""}${katex ? " (LaTeX verificado)" : " (LaTeX NÃO verificado — defina KATEX_PATH)"}; ${erros.length} erro(s).`);
+process.exit(erros.length ? 1 : 0);
+
+// ------------------------------------------------------------ item
+function checaItem(it, inome) {
+      const antes = erros.length;
       for (const campo of CAMPOS_ITEM) if (it[campo] === undefined || it[campo] === "") erros.push(`${inome}: falta "${campo}"`);
       if (!Array.isArray(it.passos) || it.passos.length < 2) erros.push(`${inome}: precisa de pelo menos 2 passos`);
       (it.passos || []).forEach((p, i) => {
@@ -177,12 +215,4 @@ for (const g of GUIA.grupos) {
         erros.push(`${inome}: expressão JS inválida em f/resp (${e.message})`);
       }
       if (erros.length === antes) itensOk++;
-    }
-  }
 }
-
-const total = GUIA.grupos.reduce((s, g) => s + (g.exercicios || []).reduce((t, e) => t + (e.itens || []).length, 0), 0);
-for (const a of avisos) console.log("aviso: " + a);
-for (const e of erros) console.log("ERRO:  " + e);
-console.log(`\n${itensOk}/${total} itens OK${katex ? " (LaTeX verificado)" : " (LaTeX NÃO verificado — defina KATEX_PATH)"}; ${erros.length} erro(s).`);
-process.exit(erros.length ? 1 : 0);

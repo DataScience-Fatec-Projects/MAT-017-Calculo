@@ -9,8 +9,15 @@ Site de estudo para a P2: cada atividade do 2º bimestre resolvida **passo a pas
 | **Normal + infos** | + o *porquê* de cada passo (qual regra e por que ela serve) + o erro mais comum |
 | **Detalhado** | + todas as contas intermediárias (expoentes, frações, sinais) + como conferir |
 
-Também tem: formulário só com o que caiu no bimestre, modo "revelar um passo por vez", gráfico interativo de $f$ e da derivada,
-progresso salvo no navegador ("Entendi"), filtro por regra e avisos sobre erros no gabarito do professor.
+Nada da resolução aparece sozinho: o item abre só com a pergunta, e o aluno toca em **Passo a passo**, **Resolução completa**
+ou **Só a resposta**. Visual inspirado no iOS (abas, listas agrupadas, balões estilo iMessage), com tema claro e escuro.
+
+Também tem:
+- **Simulado P2** (aba própria): 4 questões, 12 pontos com os pesos da P1 (Q1 a,b = 3 · Q2 = 2 · Q3 a,b = 4 · Q4 a,b = 3),
+  questões e gabaritos tirados de listas publicadas (IME-USP e OpenStax), com a referência em cada item; cronômetro,
+  versão para imprimir e correção com nota (Acertei / Meio certo / Errei);
+- formulário só com o que caiu no bimestre, gráfico interativo de $f$ e da derivada (libera depois da resposta),
+  progresso salvo no navegador ("Entendi"), filtro por regra e avisos sobre erros no gabarito do professor.
 
 ## O que está no guia
 
@@ -49,6 +56,7 @@ guia-p2/
 ├── data/t007-m3.js     # Tarefa 007, parte 1 (Material 003)
 ├── data/t007-m4.js     # Tarefa 007, parte 2 (Material 004)
 ├── data/t008.js        # Tarefa 008
+├── data/simulado.js    # Simulado P2 (12 pts, questões com referência)
 └── tools/
     ├── verificar.mjs       # checa estrutura, respostas (derivada numérica) e LaTeX
     └── exemplo-grupo.js    # modelo para escrever conteúdo novo

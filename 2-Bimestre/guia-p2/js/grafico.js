@@ -32,7 +32,7 @@
   }
 
   GUIA.criarGrafico = function (container, item) {
-    const variavel = /\bt\b/.test(item.f) && !/\bx\b/.test(item.f) ? "t" : "x";
+    const variavel = /\bx\b/.test(item.f) ? "x" : /\bz\b/.test(item.f) ? "z" : /\bt\b/.test(item.f) ? "t" : "x";
     const F = seguro(GUIA.compilar(item.f));
     const curvas = [{ fn: F, cor: "--curva-f", rotulo: "f", traco: [] }];
     let tangente = null;
@@ -93,10 +93,10 @@
         ${curvas.map((c) => `<span><i style="background:var(${c.cor})"></i>${c.rotulo}</span>`).join("")}
         <span class="leitura" aria-live="off"></span>
       </div>
-      <div class="botoes" style="margin-top:8px">
-        <button class="btn pequeno" data-z="0.6" aria-label="Aproximar">＋ zoom</button>
-        <button class="btn pequeno" data-z="1.6" aria-label="Afastar">－ zoom</button>
-        <button class="btn pequeno" data-z="0" aria-label="Voltar à visão inicial">⟲ resetar</button>
+      <div class="botoes">
+        <button class="pilula cinza" data-z="0.6" aria-label="Aproximar">＋ Zoom</button>
+        <button class="pilula cinza" data-z="1.6" aria-label="Afastar">－ Zoom</button>
+        <button class="pilula cinza" data-z="0" aria-label="Voltar à visão inicial">Resetar</button>
       </div>`;
     const canvas = container.querySelector("canvas");
     const leitura = container.querySelector(".leitura");
