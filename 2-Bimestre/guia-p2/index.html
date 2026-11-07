@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guia P2 · Cálculo</title>
+  <meta name="description" content="Guia de estudo para a P2 de Cálculo (MAT-017, FATEC): todas as atividades do 2º bimestre resolvidas passo a passo, em três níveis de detalhe.">
+  <meta name="theme-color" content="#4338ca">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234338ca'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-style='italic' text-anchor='middle' fill='white'%3E%E2%88%82%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    // aplica o tema salvo antes de pintar a página (evita "piscar")
+    try { var t = localStorage.getItem("guiaP2:tema"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="js/registro.js"></script>
+  <script defer src="data/formulario.js"></script>
+  <script defer src="data/t006.js"></script>
+  <script defer src="data/t007-m3.js"></script>
+  <script defer src="data/t007-m4.js"></script>
+  <script defer src="data/t008.js"></script>
+  <script defer src="js/grafico.js"></script>
+  <script defer src="js/app.js"></script>
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="topo">
+    <button class="btn-icone so-mobile" id="btn-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <a class="marca" href="#/">
+      <span class="marca-logo" aria-hidden="true">∂</span>
+      <span class="marca-texto"><b>Guia P2</b> <span class="marca-sub">Cálculo · MAT-017</span></span>
+    </a>
+
+    <div class="nivel" role="radiogroup" aria-label="Nível de detalhe das explicações">
+      <button role="radio" data-nivel="1" title="Passos curtos até a resposta (tecla 1)"><span class="lg">Normal</span><span class="sm">Normal</span></button>
+      <button role="radio" data-nivel="2" title="Acrescenta o porquê de cada passo e o erro comum (tecla 2)"><span class="lg">Normal + infos</span><span class="sm">+ Infos</span></button>
+      <button role="radio" data-nivel="3" title="Acrescenta todas as contas intermediárias e como conferir (tecla 3)"><span class="lg">Detalhado</span><span class="sm">Detalhado</span></button>
+    </div>
+
+    <button class="btn-icone" id="btn-tema" aria-label="Alternar tema claro/escuro" title="Tema claro/escuro">
+      <svg class="ic-sol" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <svg class="ic-lua" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+    </button>
+  </header>
+
+  <div class="layout">
+    <nav class="menu" id="menu" aria-label="Navegação">
+      <div class="menu-progresso" id="menu-progresso"></div>
+      <ul class="menu-lista" id="menu-lista"></ul>
+    </nav>
+    <div class="veu" id="veu" hidden></div>
+
+    <main id="conteudo" class="conteudo" tabindex="-1">
+      <noscript><p class="aviso">Este guia precisa de JavaScript ativado.</p></noscript>
+    </main>
+  </div>
+</body>
+</html>
