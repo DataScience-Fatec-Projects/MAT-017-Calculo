@@ -27,6 +27,8 @@
             <thead><tr><th>Função</th><th></th><th>Derivada</th><th></th></tr></thead>
             <tbody>
               ${linha(R`f(x) = a`, R`f'(x) = 0`, "a constante")}
+              ${linha(R`f(x) = x`, R`f'(x) = 1`, R`caso $n = 1$ da potência`)}
+              ${linha(R`f(x) = a\,x`, R`f'(x) = a`, R`a constante &nbsp; ex.: $(-5x)' = -5$`)}
               ${linha(R`f(x) = x^n`, R`f'(x) = n\,x^{n-1}`, "vale para n negativo e fracionário")}
               ${linha(R`f(x) = e^x`, R`f'(x) = e^x`)}
               ${linha(R`f(x) = \ln x`, R`f'(x) = \dfrac{1}{x}`)}
